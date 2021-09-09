@@ -1,0 +1,21 @@
+.product-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  height: 100%;
+  width: 100%;
+}
+
+.product_name {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.product_price {
+  margin: 1rem 0;
+  font-size: 3rem;
+  font-weight: 300;
+}
