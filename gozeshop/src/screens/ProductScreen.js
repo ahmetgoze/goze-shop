@@ -1,13 +1,22 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
 import Button from "../components/UI/Button";
-import Card from "../components/UI/Card";
-import products from "../products";
 import styles from "./ProductScreen.module.css";
 
 const ProductScreen = ({ match }) => {
-  const product = products.find((product) => product._id === match.params.id);
+  const [product, setProduct] = useState({});
+
+  const id = match.params.id;
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get(`/api/products/${id}`);
+
+      setProduct(data);
+    };
+    fetchProducts();
+  }, [id]);
 
   return (
     <>
@@ -39,7 +48,8 @@ const ProductScreen = ({ match }) => {
               {product.description}
             </p>
             <p className={styles.stock}>
-             <span>Status: </span> {product.countInStock ? "In Stock" : "Out of Stock"}{" "}
+              <span>Status: </span>{" "}
+              {product.countInStock ? "In Stock" : "Out of Stock"}{" "}
             </p>
             <div className="my-2">
               <Button className={"btn btn-dark"}>Add To Chart</Button>
