@@ -9,7 +9,9 @@ const Product = ({ product }) => {
     <Card>
       <div className={styles["product-card"]}>
         <Link to={`/product/${product._id}`}>
-          <img src={product.image} alt={product.name} />
+          <div className={styles["image-container"]}>
+            <img src={product.image} alt={product.name} />
+          </div>
         </Link>
         <Link className={styles["product_name"]} to={`/product/${product._id}`}>
           {product.name}

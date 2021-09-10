@@ -2,25 +2,338 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0 1rem;
+  margin-top: 35rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 10rem;
+  font-weight: 800;
+  position: relative;
+  transform: translateX(2rem);
+  letter-spacing: -0.1rem;
+  transform: translateX(-80rem);
+}
+
+.title-1 {
+  position: absolute;
+  animation: title-animation 0.4s forwards;
+}
+
+.title-2 {
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  color: crimson;
+  animation: title-animation 0.4s forwards 0.05s;
+}
+
+.title-3 {
+  position: absolute;
+  top: 20rem;
+  left: 0;
+  animation: title-animation 0.4s forwards 0.1s;
+}
+
+.text {
+  position: absolute;
+  right: 15rem;
+  top: 20rem;
+  width: 22rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  animation: text-animation 0.5s;
+}
+
+.text span {
+  color: crimson;
+}
+
+@media screen and (max-width: 1800px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0 1rem;
+    margin-top: 30rem;
+  }
+
+  .title {
+    font-size: 8rem;
+    font-weight: 800;
+  }
+
+  .title-2 {
+    top: 8rem;
+  }
+
+  .title-3 {
+    top: 16rem;
+  }
+
+  .text {
+    font-size: 1.3rem;
+
+    top: 17rem;
+  }
 }
 
 @media screen and (max-width: 1500px) {
   .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 22rem;
+  }
+
+  .title {
+    font-size: 6rem;
+    font-weight: 800;
+  }
+
+  .title-2 {
+    top: 6rem;
+  }
+
+  .title-3 {
+    top: 12rem;
+  }
+
+  .text {
+    font-size: 1.2rem;
+    top: 14.5rem;
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
   .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 50vh;
+  }
+
+  .text {
+    right: 6rem;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .product-grid {
+    margin-top: 17rem;
+  }
+  .title {
+    font-size: 5rem;
+    font-weight: 800;
+  }
+
+  .title-2 {
+    top: 5rem;
+  }
+
+  .title-3 {
+    top: 10rem;
+  }
+
+  .text {
+    font-size: 1.1rem;
+    top: 13.3rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .product-grid {
+    margin-top: 12rem;
+  }
+  .title {
+    font-size: 3.5rem;
+    font-weight: 800;
+  }
+
+  .title-2 {
+    top: 3.2rem;
+  }
+
+  .title-3 {
+    top: 6.4rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    top: 11rem;
   }
 }
 
 @media screen and (max-width: 900px) {
   .product-grid {
-    display: grid;
+    margin-top: 12rem;
+  }
+  .title {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+
+  .title-2 {
+    top: 3rem;
+  }
+
+  .title-3 {
+    top: 6rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    top: 10.5rem;
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .product-grid {
+    margin-top: 30rem;
     grid-template-columns: repeat(1, 1fr);
+  }
+  .title {
+    font-size: 5rem;
+    font-weight: 800;
+  }
+
+  .title-2 {
+    top: 5rem;
+  }
+
+  .title-3 {
+    top: 10rem;
+  }
+
+  .text {
+    font-size: 1.1rem;
+    top: 27rem;
+    right: 3.5rem;
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product-grid {
+    margin-top: 20rem;
+  }
+
+  .title {
+    font-size: 4rem;
+    right: 2rem;
+  }
+
+  .title-2 {
+    top: 3.5rem;
+  }
+
+  .title-3 {
+    top: 7rem;
+  }
+  .text {
+    font-size: 1.1rem;
+    top: 21rem;
+    left: 4.2rem;
+    width: 16rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .product-grid {
+    margin-top: 17rem;
+  }
+
+  .title {
+    font-size: 3rem;
+    right: 2rem;
+  }
+
+  .title-2 {
+    top: 2.8rem;
+  }
+
+  .title-3 {
+    top: 5.6rem;
+  }
+  .text {
+    font-size: 1.1rem;
+    top: 18rem;
+    left: 3.8rem;
+    width: 16rem;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .product-grid {
+    margin-top: 14rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    right: 2rem;
+  }
+
+  .title-2 {
+    top: 2.2rem;
+  }
+
+  .title-3 {
+    top: 4.4rem;
+  }
+  .text {
+    font-size: 1.1rem;
+    top: 16rem;
+    left: 3.3rem;
+    width: 16rem;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .product-grid {
+    margin-top: 14rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    right: 2rem;
+  }
+
+  .title-2 {
+    top: 2.2rem;
+  }
+
+  .title-3 {
+    top: 4.4rem;
+  }
+  .text {
+    font-size: 1.1rem;
+    top: 16.5rem;
+    left: 3rem;
+    width: 16rem;
+  }
+}
+
+@keyframes title-animation {
+  0% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(84rem);
+  }
+  100% {
+    transform: translateX(82rem);
+  }
+}
+
+@keyframes text-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
