@@ -1,8 +1,11 @@
+
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0 1rem;
   margin-top: 35rem;
+  animation: fade-up 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .title {
@@ -335,5 +338,30 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

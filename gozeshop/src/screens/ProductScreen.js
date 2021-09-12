@@ -1,28 +1,31 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
 import Button from "../components/UI/Button";
+import Message from "../components/UI/Message";
+import Spinner from "../components/UI/Spinner";
+import { listProductDetails } from "../store/actions/productActions";
 import styles from "./ProductScreen.module.css";
 
 const ProductScreen = ({ match }) => {
-  const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
+  const productDetail = useSelector((state) => state.productDetail);
+
+  const { loading, error, product } = productDetail;
 
   const id = match.params.id;
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get(`/api/products/${id}`);
-
-      setProduct(data);
-    };
-    fetchProducts();
-  }, [id]);
+    dispatch(listProductDetails(id));
+  }, [dispatch, id]);
 
   return (
-    <>
+    <div className={styles["product-screen"]}>
       <Link className="btn btn-light" to="/">
         Go Back
       </Link>
+      {loading && <Spinner />}
+      {error && <Message className="alert">{error}</Message>}
       <div className={styles.product}>
         <div className={styles["product-left"]}>
           <img src={product.image} alt="" className={styles["product_image"]} />
@@ -57,7 +60,7 @@ const ProductScreen = ({ match }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

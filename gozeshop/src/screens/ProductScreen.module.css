@@ -1,3 +1,7 @@
+.product-screen {
+  animation: fade-in 0.5s ease-in-out;
+}
+
 .product {
   display: flex;
   margin: 2rem 0;
@@ -9,6 +13,7 @@
   align-items: flex-start;
   flex: 1.2;
   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.2);
+  animation: image 0.3s ease-in-out;
 }
 
 .product_image {
@@ -23,6 +28,7 @@
   transform: translateX(-6.6rem);
   background: #fff;
   padding: 1rem;
+  animation: title 0.3s ease-in-out;
 }
 
 .product-right_top h2 {
@@ -33,6 +39,7 @@
 
 .product-right_bottom {
   margin: 2rem 2rem 0 2rem;
+  animation: fade-down 0.3s ease-in-out;
 }
 
 .price {
@@ -60,3 +67,38 @@
   font-size: 1.2rem;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes image {
+  0% {
+    transform: scale(0.01);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes title {
+  0% {
+    transform: translateX(6.6rem);
+  }
+  100% {
+    transform: translateX(-6.6rem);
+  }
+}
+
+@keyframes fade-down {
+  0% {
+    transform: translatey(-13.2rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

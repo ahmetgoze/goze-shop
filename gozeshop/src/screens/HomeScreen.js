@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { listProducts } from "../store/actions/productActions";
+// import { PuffLoader } from "react-spinners";
 import styles from "./HomeScreen.module.css";
 import Product from "../components/Product";
+import Spinner from "../components/UI/Spinner";
+import Message from "../components/UI/Message";
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get("/api/products");
-      setProducts(data);
-    };
-
-    fetchProducts();
-  }, []);
+    dispatch(listProducts());
+  }, [dispatch]);
 
   return (
     <>
@@ -28,6 +30,9 @@ const HomeScreen = () => {
           purchase <span>safely</span>.
         </p>
       </div>
+      {loading && <Spinner />}
+
+      {error && <Message className="alert">{error}</Message>}
       <div className={styles["product-grid"]}>
         {products.map((product) => {
           return <Product key={product._id} product={product}></Product>;
