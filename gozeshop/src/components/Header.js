@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import logo from "../img/logo2.svg";
 import styles from "./Header.module.css";
 
@@ -13,12 +13,12 @@ const Header = () => {
           </NavLink>
           <ul className={styles["navbar_link"]}>
             <li>
-              <NavLink to="/cart">
+              <NavLink to="/cart" activeClassName={styles["navbar-active"]}>
                 <i className="fas fa-shopping-cart"></i> Cart
               </NavLink>
             </li>
             <li>
-              <NavLink to="/login">
+              <NavLink to="/login" activeClassName={styles["navbar-active"]}>
                 <i className="fas fa-user"></i> Sign In
               </NavLink>
             </li>
@@ -29,4 +29,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
