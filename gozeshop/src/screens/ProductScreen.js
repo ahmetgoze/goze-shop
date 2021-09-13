@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
@@ -8,16 +8,24 @@ import Spinner from "../components/UI/Spinner";
 import { listProductDetails } from "../store/actions/productActions";
 import styles from "./ProductScreen.module.css";
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
+  const [qty, setQty] = useState(1);
+
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
 
   const { loading, error, product } = productDetail;
 
   const id = match.params.id;
+
   useEffect(() => {
     dispatch(listProductDetails(id));
   }, [dispatch, id]);
+
+  const addToCartHandler = () => {
+    console.log('eee');
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
+  };
 
   return (
     <div className={styles["product-screen"]}>
@@ -54,8 +62,34 @@ const ProductScreen = ({ match }) => {
               <span>Status: </span>{" "}
               {product.countInStock ? "In Stock" : "Out of Stock"}{" "}
             </p>
+            {product.countInStock > 0 && (
+              <div className={styles.quantity}>
+                <label htmlFor="qty">Quantity: </label>
+                <select
+                  id="qty"
+                  value={qty}
+                  onChange={(e) => setQty(e.target.value)}
+                >
+                  {[...Array(product.countInStock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+                <span className={styles["custom-arrow"]}></span>
+              </div>
+            )}
             <div className="my-2">
-              <Button className={"btn btn-dark"}>Add To Chart</Button>
+              {
+                <Button
+                  onClick={addToCartHandler}
+                  className={product.countInStock > 0 ? "btn btn-dark" : "btn btn-not-active" }
+                  type="button"
+                  disabled={product.countInStock === 0}
+                >
+                  Add To Chart
+                </Button>
+              }
             </div>
           </div>
         </div>
