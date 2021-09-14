@@ -20,15 +20,29 @@ const HomeScreen = () => {
   return (
     <>
       <div className={styles.banner}>
-        <h1 className={styles.title}>
-          <span className={styles["title-1"]}>Buy</span>
+        <div className={styles["banner-title"]}>
+          <h1>
+            {/* <span className={styles["title-1"]}>Get</span>
           <span className={styles["title-2"]}>the best</span>
-          <span className={styles["title-3"]}>products.</span>
-        </h1>
-        <p className={styles.text}>
-          We are specialised in bringing the best quality products for you to
-          purchase <span>safely</span>.
-        </p>
+        <span className={styles["title-3"]}>products.</span> */}
+            <span>Get</span>
+            <br />
+            <span className={styles["banner-colored"]}>the best</span>
+            <br />
+            <span>products.</span>
+          </h1>
+        </div>
+        {/* <p className={styles.text}>
+        We specialize in bringing the best products for you to order safely and get them delivered quickly.
+        </p> */}
+        <div className={styles["banner-text"]}>
+          <p>
+            We specialize in bringing the best products for you to order{" "}
+            <span className={styles["banner-colored"]}>safely </span>
+            and get them delivered{" "}
+            <span className={styles["banner-colored"]}>quickly</span>.
+          </p>
+        </div>
       </div>
       {loading && <Spinner />}
 

@@ -28,10 +28,10 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
+      <div className={styles["product-screen"]}>
       <Link className="btn btn-light" to="/">
         Go Back
       </Link>
-      <div className={styles["product-screen"]}>
         {loading && <Spinner />}
         {error && <Message className="alert">{error}</Message>}
         <div className={styles.product}>
