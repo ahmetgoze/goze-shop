@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
-import logo from "../img/logo2.svg";
+import logo from "../img/logo-alt.svg";
 import styles from "./Header.module.css";
 
 const Header = () => {

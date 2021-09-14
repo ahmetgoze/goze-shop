@@ -13,21 +13,19 @@
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
 .navbar_logo {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
+  width: 8rem;
   transition: all 0.2s ease-out;
 }
 
 .navbar_logo:hover,
 .navbar_logo:active {
-  height: 3.15rem;
-  width: 3.15rem;
-
-  box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+  transform: translateX(0.2rem);
 }
 
 .navbar_logo img {
@@ -54,10 +52,13 @@
   transition: all 0.15s ease-out;
 }
 
-.navbar_link li a:hover,
-.navbar_link li a:active {
+.navbar_link li a:hover{
   color: crimson;
   text-shadow: 2px 5px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar_link li a:focus {
+  transform: translateX(0.2rem);
 }
 
 .navbar-active {
@@ -68,7 +69,7 @@
 
 .navbar_link i {
   position: relative;
-  margin-right: .2rem;
+  margin-right: 0.2rem;
 }
 
 .circle {
@@ -99,7 +100,6 @@
   justify-content: center;
   animation: circlee 0.2s ease-in-out;
 }
-
 
 @keyframes circlee {
   0% {
