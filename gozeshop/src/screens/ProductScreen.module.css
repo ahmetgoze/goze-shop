@@ -17,7 +17,7 @@
 .product_image {
   width: 100%;
   height: auto;
-  transform: translateY(.4rem);
+  transform: translateY(0.4rem);
 }
 
 .product-right {
@@ -29,7 +29,7 @@
 
 .product-right_top {
   transform: translateX(-6.6rem);
-  background: #fff;
+  background-color: #f6f7fb;
   padding: 1rem;
   animation: title 0.3s ease-in-out;
 }
@@ -75,7 +75,6 @@
 
 .quantity {
   margin-top: 1.5rem;
-  position: relative;
 }
 
 .quantity select {
@@ -85,9 +84,8 @@
   padding: 1rem;
   border: 0;
   margin-left: 0.5rem;
+  background-color: #f6f7fb;
 }
-
-
 
 @keyframes fade-in {
   0% {
