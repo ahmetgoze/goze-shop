@@ -4,8 +4,8 @@
 }
 
 .navbar-container {
-  max-width: 97vw;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0 auto 2rem auto;
 }
 
 .navbar {
@@ -52,7 +52,7 @@
   transition: all 0.15s ease-out;
 }
 
-.navbar_link li a:hover{
+.navbar_link li a:hover {
   color: crimson;
   text-shadow: 2px 5px 6px rgba(0, 0, 0, 0.2);
 }
