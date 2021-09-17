@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import logo from "../img/logo-alt.svg";
 import styles from "./Header.module.css";
 
 const Header = () => {
+  const [navbar, Setnavbar] = useState(false);
+
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
+  const changeNavbar = () => {
+    if (window.scrollY > 50) {
+      Setnavbar(true);
+    } else {
+      Setnavbar(false);
+    }
+  };
+  console.log(navbar);
+
+  window.addEventListener("scroll", changeNavbar);
+
   return (
-    <header className={styles.header}>
+    <header className={navbar ? styles["sticky-header"] : styles["header"]}>
       <div className={styles["navbar-container"]}>
         <div className={styles.navbar}>
           <NavLink to="/" className={styles["navbar_logo"]}>
@@ -28,7 +42,7 @@ const Header = () => {
                     </>
                   )}
                 </i>
-                 Cart
+                Cart
               </NavLink>
             </li>
             <li>

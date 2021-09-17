@@ -1,11 +1,27 @@
 .header {
   /* background-color: #fff; */
-  border-bottom: 1px solid #f4f4f4;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+}
+
+.sticky-header {
+  background-color: #f6f7fbfa;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-out;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .navbar-container {
   max-width: 100%;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 0 auto;
 }
 
 .navbar {

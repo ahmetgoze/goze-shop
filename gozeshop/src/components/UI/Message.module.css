@@ -1,12 +1,13 @@
 .alert,
 .success {
   padding: 0.8rem 1.5rem;
-  margin: 1rem 0;
+  text-align: center;
+  margin: 1rem auto;
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  max-width: 40rem;
+  max-width: 30rem;
   border-radius: 4px;
   box-shadow: 2px 5px 12px rgba(0, 0, 0, 0.2);
 }
