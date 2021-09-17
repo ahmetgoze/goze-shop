@@ -1,6 +1,7 @@
 .container {
-  margin: 0 auto;
-  width: 90%;
+  margin: 1rem auto;
+  max-width: 1900px;
   padding: 2rem;
+  padding: 2rem 4rem;
   background-color: #f6f7fb;
 }

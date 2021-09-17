@@ -23,6 +23,16 @@
   font-weight: 700;
   animation: letter-right 0.2s ease-in-out;
   text-transform: none;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  margin-top: .2rem;
+  width: 30rem;
+  transform: translateX(2.6rem) rotateX(45deg) rotateY(-5deg);
+  opacity: 0;
+  animation: fade-in 0.4s ease-in-out forwards;
 }
 
 @keyframes letter-right {

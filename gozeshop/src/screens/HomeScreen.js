@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Line from "../img/Line.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../store/actions/productActions";
 // import { PuffLoader } from "react-spinners";
@@ -29,8 +30,13 @@ const HomeScreen = () => {
             <br />
             <span>Computers,</span>
             <br />
-            <span>Smartphones <span className={styles["banner-colored"]}>&</span> <br /> many more.</span>
+            <span>
+              Smartphones <span className={styles["banner-colored"]}>&</span>{" "}
+              <br /> many more.
+            </span>{" "}
+            <br />
           </h1>
+            <img className={styles.line} src={Line} alt="" />
         </div>
         {/* <p className={styles.text}>
         We specialize in bringing the best products for you to order safely and get them delivered quickly.
