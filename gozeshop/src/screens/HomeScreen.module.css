@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 20rem;
+  height: 21rem;
   margin: 0 0 4rem 0;
   animation: fade-in 0.2s ease-in-out;
 }
@@ -17,16 +17,17 @@
 
 .banner .banner-title h1 {
   padding: 0 2rem;
-  font-size: 9rem;
-  line-height: 7rem;
+  font-size: 6rem;
+  line-height: 5rem;
   letter-spacing: -0.4rem;
   font-weight: 700;
   animation: letter-right 0.2s ease-in-out;
+  text-transform: none;
 }
 
 @keyframes letter-right {
   0% {
-    letter-spacing: -6rem;
+    letter-spacing: -4rem;
   }
   100% {
     letter-spacing: -0.4rem;
@@ -53,6 +54,7 @@
 
 .banner-colored {
   color: crimson;
+  font-weight: 800;
 }
 
 .product-grid {

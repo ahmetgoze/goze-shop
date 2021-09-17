@@ -25,11 +25,11 @@ const HomeScreen = () => {
             {/* <span className={styles["title-1"]}>Get</span>
           <span className={styles["title-2"]}>the best</span>
         <span className={styles["title-3"]}>products.</span> */}
-            <span>Get</span>
+            <span>Elektronics,</span>
             <br />
-            <span className={styles["banner-colored"]}>the best</span>
+            <span>Computers,</span>
             <br />
-            <span>products.</span>
+            <span>Smartphones <span className={styles["banner-colored"]}>&</span> <br /> many more.</span>
           </h1>
         </div>
         {/* <p className={styles.text}>
