@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, withRouter } from "react-router-dom";
+import { Link, NavLink, withRouter } from "react-router-dom";
 import logo from "../img/logo-alt.svg";
 import styles from "./Header.module.css";
 
@@ -8,7 +8,10 @@ const Header = () => {
   const [navbar, Setnavbar] = useState(false);
 
   const cart = useSelector((state) => state.cart);
+  const userLogin = useSelector((state) => state.userLogin);
+
   const { cartItems } = cart;
+  const { name } = userLogin.userInfo;
 
   const changeNavbar = () => {
     if (window.scrollY > 50) {
@@ -17,7 +20,8 @@ const Header = () => {
       Setnavbar(false);
     }
   };
-  console.log(navbar);
+
+  const logoutHandler = () => {};
 
   window.addEventListener("scroll", changeNavbar);
 
@@ -46,9 +50,32 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/login" activeClassName={styles["navbar-active"]}>
-                <i className="fas fa-user"></i>Sign In
-              </NavLink>
+              {!name && (
+                <NavLink to="/login" activeClassName={styles["navbar-active"]}>
+                  <i className="fas fa-user"></i>Sign In
+                </NavLink>
+              )}
+              {name && (
+                <>
+                  <NavLink
+                    to="/profile" className={styles['user-profile']}
+                    activeClassName={styles["navbar-active"]}
+                  >
+                    <i className="fas fa-user-circle"></i>
+                    {`${name}`}
+                  <ul className={styles["dropdown-menu"]}>
+                    <li>
+                      <NavLink to="/profile">Profile</NavLink>
+                    </li>
+                    <li>
+                      <Link to="/" onClick={logoutHandler}>
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                  </NavLink>
+                </>
+              )}
             </li>
           </ul>
         </div>

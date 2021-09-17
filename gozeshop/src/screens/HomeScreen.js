@@ -26,7 +26,7 @@ const HomeScreen = () => {
             {/* <span className={styles["title-1"]}>Get</span>
           <span className={styles["title-2"]}>the best</span>
         <span className={styles["title-3"]}>products.</span> */}
-            <span>Elektronics,</span>
+            <span>Electronics,</span>
             <br />
             <span>Computers,</span>
             <br />
