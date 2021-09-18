@@ -120,6 +120,9 @@
 
 /* Dropdown Menu */
 
+.dropdown > * {
+}
+
 .dropdown-menu {
   display: flex;
   flex-direction: column;
@@ -133,19 +136,25 @@
   opacity: 0;
 }
 
-.user-profile:hover > .dropdown-menu {
+.dropdown:hover > .dropdown-menu {
   animation: dropdown 0.2s ease-in-out;
   opacity: 1;
   visibility: visible;
 }
 
+/* .user-profile:hover + .dropdown-menu {
+  animation: dropdown 0.2s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+} */
+
 .dropdown-menu li {
   animation: dropdown 0.2s ease-in-out;
-  padding: 0.5rem 2rem;
 }
 
 .dropdown-menu a {
   transition: all 0.2s;
+  padding: 0.5rem 1rem;
 }
 
 .dropdown-menu li:hover {

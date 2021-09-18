@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import logo from "../img/logo-alt.svg";
+import { logout } from "../store/actions/userActions";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const [navbar, Setnavbar] = useState(false);
+  const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   const userLogin = useSelector((state) => state.userLogin);
 
   const { cartItems } = cart;
-  const { name } = userLogin.userInfo;
+
+  const { name } = userLogin.userInfo || "";
 
   const changeNavbar = () => {
     if (window.scrollY > 50) {
@@ -21,7 +24,9 @@ const Header = () => {
     }
   };
 
-  const logoutHandler = () => {};
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
   window.addEventListener("scroll", changeNavbar);
 
@@ -56,13 +61,15 @@ const Header = () => {
                 </NavLink>
               )}
               {name && (
-                <>
+                <div className={styles["dropdown"]}>
                   <NavLink
-                    to="/profile" className={styles['user-profile']}
+                    to="/profile"
+                    className={styles["user-profile"]}
                     activeClassName={styles["navbar-active"]}
                   >
                     <i className="fas fa-user-circle"></i>
                     {`${name}`}
+                  </NavLink>
                   <ul className={styles["dropdown-menu"]}>
                     <li>
                       <NavLink to="/profile">Profile</NavLink>
@@ -73,8 +80,7 @@ const Header = () => {
                       </Link>
                     </li>
                   </ul>
-                  </NavLink>
-                </>
+                </div>
               )}
             </li>
           </ul>
