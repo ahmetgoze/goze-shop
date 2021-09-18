@@ -53,10 +53,12 @@
   list-style: none;
   display: flex;
   position: relative;
+  transition: all 0.15s ease-out;
 }
 
 .navbar_link li {
   padding: 1rem;
+  transition: all 0.15s ease-out;
 }
 
 .navbar_link li a {
@@ -120,8 +122,6 @@
 
 /* Dropdown Menu */
 
-.dropdown > * {
-}
 
 .dropdown-menu {
   display: flex;
@@ -154,7 +154,7 @@
 
 .dropdown-menu a {
   transition: all 0.2s;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 0;
 }
 
 .dropdown-menu li:hover {

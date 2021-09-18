@@ -70,7 +70,8 @@
   margin-bottom: 0.2rem;
 }
 
-.label-password {
+.label-password,
+.label-email {
   margin: 1rem 0 0.2rem 0;
 }
 
@@ -96,6 +97,11 @@
 .link:hover {
   text-shadow: 2px 5px 6px rgba(0, 0, 0, 0.2);
   color: crimson;
+}
+
+.password-error {
+  text-align: center;
+  font-weight: 700;
 }
 
 /* .form-container > * {

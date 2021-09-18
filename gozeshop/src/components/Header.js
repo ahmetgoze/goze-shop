@@ -68,7 +68,7 @@ const Header = () => {
                     activeClassName={styles["navbar-active"]}
                   >
                     <i className="fas fa-user-circle"></i>
-                    {`${name}`}
+                    {`${name.split(" ")[0]}`}
                   </NavLink>
                   <ul className={styles["dropdown-menu"]}>
                     <li>
