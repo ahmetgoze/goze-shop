@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/UI/Button";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";
+import { USER_UPDATE_RESET } from "../constants/userConstants";
 import {
   getUserDetails,
   updateUserDetails,
@@ -32,14 +33,17 @@ const ProfileScreen = ({ history }) => {
     if (!userInfo) {
       history.push("/");
     } else {
-      if (!user.name) {
+      if (!user.name || success) {
+        dispatch({
+          type: USER_UPDATE_RESET,
+        });
         dispatch(getUserDetails("/profile"));
       } else {
         setName(user.name);
         setEmail(user.email);
       }
     }
-  }, [history, userInfo, user, dispatch]);
+  }, [history, userInfo, user, dispatch, success]);
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
