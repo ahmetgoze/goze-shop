@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/UI/Button";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";
-import { getUserDetails } from "../store/actions/userActions";
+import {
+  getUserDetails,
+  updateUserDetails,
+} from "../store/actions/userActions";
 import styles from "./ProfileScreen.module.css";
 
 const ProfileScreen = ({ history }) => {
@@ -21,6 +24,9 @@ const ProfileScreen = ({ history }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
   useEffect(() => {
     if (!userInfo) {
@@ -40,7 +46,16 @@ const ProfileScreen = ({ history }) => {
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
+      setMessage(null);
       // DISPATCH UPDATE PROFILE
+      dispatch(
+        updateUserDetails({
+          id: user._id,
+          name,
+          email,
+          password,
+        })
+      );
     }
   };
 
@@ -128,6 +143,11 @@ const ProfileScreen = ({ history }) => {
                 Update
               </Button>
               {message && <p className={styles["password-error"]}>{message}</p>}
+              {success && (
+                <p className={styles["password-error"]}>
+                  "Successfully changed the informations."
+                </p>
+              )}
             </form>
           )}
           <div
@@ -135,7 +155,7 @@ const ProfileScreen = ({ history }) => {
             className={styles["profile-edit"]}
           >
             <i className="fas fa-pen"></i>
-            {!editState ? "Edit" : "Cancel"}
+            {!editState ? "Edit" : "Go Back"}
           </div>
         </div>
       </div>
