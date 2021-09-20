@@ -1,24 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Button from "../components/UI/Button";
 import Message from "../components/UI/Message";
 import { addToCart, removeFromCart } from "../store/actions/cartActions";
+import { createOrder } from "../store/actions/orderActions";
 import styles from "./PlaceOrderScreen.module.css";
 
 const PlaceOrderScreen = ({ match, location, history }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  const orderCreate = useSelector((state) => state.orderCreate);
+
   const { cartItems, shippingAddress } = cart;
+  const { success, order, error, loading } = orderCreate;
+  console.log(orderCreate);
+  console.log(success);
+
+  // Calculate prices
+  cart.itemsPrice = cart.cartItems.reduce(
+    (acc, item) => acc + item.price * item.qty,
+    0
+  );
+  cart.shippingPrice = 9.99;
+  cart.totalPrice = Number((cart.itemsPrice + cart.shippingPrice).toFixed(2));
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
 
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`);
+    }
+    // eslint-disable-next-line
+  }, [history, success]);
+
   const placeOrderHandler = () => {
-    
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        totalPrice: Number(cart.totalPrice),
+      })
+    );
   };
 
   return (
@@ -118,6 +147,7 @@ const PlaceOrderScreen = ({ match, location, history }) => {
                       .toFixed(2)}
                   </span>
                 </div>
+                {error && <Message className="alert">{error}</Message>}
                 <Button
                   className="btn btn-dark"
                   type="button"
