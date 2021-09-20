@@ -36,7 +36,7 @@ const HomeScreen = () => {
             </span>{" "}
             <br />
           </h1>
-            <img className={styles.line} src={Line} alt="" />
+          <img className={styles.line} src={Line} alt="" />
         </div>
         {/* <p className={styles.text}>
         We specialize in bringing the best products for you to order safely and get them delivered quickly.

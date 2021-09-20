@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./CheckoutSteps.module.css";
 
 const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
@@ -8,9 +8,14 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
       <ul className={styles["navbar-list"]}>
         <li className={styles["navbar-list-item"]}>
           {step1 ? (
-            <Link className={styles["active"]} to="/login">
+            <NavLink
+              disabled
+              className={styles["active"]}
+              to="/login"
+              activeClassName={styles["active-navlink"]}
+            >
               Sign In
-            </Link>
+            </NavLink>
           ) : (
             <li className={styles["not-active"]}>Sign In</li>
           )}
@@ -30,20 +35,32 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         </li>
         <li className={styles["navbar-list-item"]}>
           {step3 ? (
-            <Link className={styles["active"]} to="/payment">
+            <NavLink
+              className={styles["active"]}
+              to="/payment"
+              activeClassName={styles["active-navlink"]}
+            >
               Payment
-            </Link>
+            </NavLink>
           ) : (
-            <li className={styles["not-active"]}>Payment</li>
+            <a disabled className={styles["not-active"]}>
+              Payment
+            </a>
           )}
         </li>
         <li className={styles["navbar-list-item"]}>
           {step4 ? (
-            <Link className={styles["active"]} to="/placeorder">
+            <NavLink
+              className={styles["active"]}
+              to="/placeorder"
+              activeClassName={styles["active-navlink"]}
+            >
               Place Order
-            </Link>
+            </NavLink>
           ) : (
-            <li className={styles["not-active"]}>Place Order</li>
+            <a disabled className={styles["not-active"]}>
+              Place Order
+            </a>
           )}
         </li>
       </ul>

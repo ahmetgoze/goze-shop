@@ -3,6 +3,7 @@
   border: 2px solid #f4f4f4;
   border-radius: 8px;
   box-shadow: 5px 10px 12px rgba(0, 0, 0, 0.2);
+  background-color: #f6f7fb;
   width: 20rem;
   min-height: 22rem;
 }

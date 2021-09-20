@@ -2,7 +2,8 @@
   margin: 1rem auto;
   max-width: 1900px;
   padding: 2rem 6rem;
-  background-color: #f6f7fb;
+  background-color: #f6f7fb00;
+  z-index: -10;
 }
 
 @media screen and (max-width: 1500px) {
