@@ -12,7 +12,9 @@ const OrderScreen = ({ match, location, history }) => {
 
   const orderId = match.params.id;
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
+    if (!order || order.id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+    }
   }, [orderId, dispatch]);
 
   const orderDetails = useSelector((state) => state.orderDetails);
