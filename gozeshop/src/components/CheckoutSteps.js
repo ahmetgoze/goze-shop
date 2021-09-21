@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./CheckoutSteps.module.css";
 
-const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
+const CheckoutSteps = ({ step1, step2, step3, step4, step5, orderId }) => {
   return (
     <nav>
       <ul className={styles["navbar-list"]}>
@@ -17,9 +17,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Sign In
             </NavLink>
           ) : (
-            <a href="/" className={styles["not-active"]}>
-              Sign In
-            </a>
+            <p className={styles["not-active"]}>Sign In</p>
           )}
         </li>
         <li className={styles["navbar-list-item"]}>
@@ -32,9 +30,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Shipping
             </NavLink>
           ) : (
-            <a href="/" className={styles["not-active"]}>
-              Shipping
-            </a>
+            <p className={styles["not-active"]}>Shipping</p>
           )}
         </li>
         <li className={styles["navbar-list-item"]}>
@@ -47,9 +43,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Payment
             </NavLink>
           ) : (
-            <a href="/" disabled className={styles["not-active"]}>
-              Payment
-            </a>
+            <p className={styles["not-active"]}>Payment</p>
           )}
         </li>
         <li className={styles["navbar-list-item"]}>
@@ -62,9 +56,21 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Place Order
             </NavLink>
           ) : (
-            <a href="/" disabled className={styles["not-active"]}>
-              Place Order
-            </a>
+            <p className={styles["not-active"]}>Place Order</p>
+          )}
+        </li>
+        <li className={styles["navbar-list-item"]}>
+          {step5 ? (
+            <NavLink
+              className={styles["active"]}
+              to={`/order/${orderId}`}
+              disabled
+              activeClassName={styles["active-navlink"]}
+            >
+              Summary
+            </NavLink>
+          ) : (
+            <p className={styles["not-active"]}>Summary</p>
           )}
         </li>
       </ul>

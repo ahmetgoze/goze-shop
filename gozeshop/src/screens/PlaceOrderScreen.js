@@ -56,23 +56,6 @@ const PlaceOrderScreen = ({ match, location, history }) => {
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       {loading && <Spinner></Spinner>}
       <ul className={styles["summary-list"]}>
-        <li className={styles["summary-items"]}>
-          <h2 className={styles["title"]}>Shipping</h2>
-          <p className={styles["text"]}>
-            <strong>Address: </strong>
-            {cart.shippingAddress.address} {cart.shippingAddress.postalCode},{" "}
-            {cart.shippingAddress.city}
-            {"/"}
-            {cart.shippingAddress.country}{" "}
-          </p>
-        </li>
-        <li className={styles["summary-items"]}>
-          <h2 className={styles["title"]}>Payment Method</h2>
-          <p className={styles["text"]}>
-            <strong>Method: </strong>
-            {cart.paymentMethod}
-          </p>
-        </li>
         <li>
           <h2 className={styles["title"]}>Order Items</h2>
           {cartItems.length === 0 && (
@@ -161,6 +144,23 @@ const PlaceOrderScreen = ({ match, location, history }) => {
               </div>
             </div>
           )}
+        </li>
+        <li className={styles["summary-items"]}>
+          <h2 className={styles["title"]}>Shipping</h2>
+          <p className={styles["text"]}>
+            <strong>Address: </strong>
+            {cart.shippingAddress.address} {cart.shippingAddress.postalCode},{" "}
+            {cart.shippingAddress.city}
+            {"/"}
+            {cart.shippingAddress.country}{" "}
+          </p>
+        </li>
+        <li className={styles["summary-items"]}>
+          <h2 className={styles["title"]}>Payment Method</h2>
+          <p className={styles["text"]}>
+            <strong>Method: </strong>
+            {cart.paymentMethod}
+          </p>
         </li>
       </ul>
     </>

@@ -2,14 +2,15 @@
   text-transform: uppercase;
   font-size: 2.5rem;
   font-weight: 300;
+  display: inline-block;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
   margin: 1rem 0;
 }
 
 .text {
   text-transform: uppercase;
   font-size: 1.2rem;
-  font-weight: 300;
-  margin: 0.5rem 0;
+  margin-bottom: 1rem;
 }
 
 .summary-list {
@@ -19,8 +20,14 @@
 
 .summary-items,
 .title {
-  max-width: 50%;
   animation: transform-left 0.2s ease-in-out;
+  max-width: 50%;
+}
+
+.summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .cart-screen {
@@ -107,13 +114,12 @@
 }
 
 .checkout {
-  margin-top: 2.5rem;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
-  max-height: 17rem;
-  width: 30rem;
+  gap: 1.5rem;
   text-transform: uppercase;
   animation: transform-right 0.2s ease-in-out;
 }
@@ -142,5 +148,7 @@
 .checkout-box {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
 }
