@@ -15,6 +15,7 @@ const OrderScreen = ({ match, location, history }) => {
     if (!order || order.id !== orderId) {
       dispatch(getOrderDetails(orderId));
     }
+    // eslint-disable-next-line
   }, [orderId, dispatch]);
 
   const orderDetails = useSelector((state) => state.orderDetails);
