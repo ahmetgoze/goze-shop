@@ -17,8 +17,10 @@
   flex-direction: column;
 }
 
-.summary-items {
+.summary-items,
+.title {
   max-width: 50%;
+  animation: transform-left 0.2s ease-in-out;
 }
 
 .cart-screen {
