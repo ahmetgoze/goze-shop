@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Button from "../components/UI/Button";
 import Message from "../components/UI/Message";
+import Spinner from "../components/UI/Spinner";
 import { addToCart, removeFromCart } from "../store/actions/cartActions";
 import { createOrder } from "../store/actions/orderActions";
 import styles from "./PlaceOrderScreen.module.css";
@@ -13,7 +14,7 @@ const PlaceOrderScreen = ({ match, location, history }) => {
   const cart = useSelector((state) => state.cart);
   const orderCreate = useSelector((state) => state.orderCreate);
 
-  const { cartItems, shippingAddress } = cart;
+  const { cartItems } = cart;
   const { success, order, error, loading } = orderCreate;
   console.log(orderCreate);
   console.log(success);
@@ -53,6 +54,7 @@ const PlaceOrderScreen = ({ match, location, history }) => {
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
+      {loading && <Spinner></Spinner>}
       <ul className={styles["summary-list"]}>
         <li className={styles["summary-items"]}>
           <h2 className={styles["title"]}>Shipping</h2>

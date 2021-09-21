@@ -17,7 +17,9 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Sign In
             </NavLink>
           ) : (
-            <li className={styles["not-active"]}>Sign In</li>
+            <a href="/" className={styles["not-active"]}>
+              Sign In
+            </a>
           )}
         </li>
         <li className={styles["navbar-list-item"]}>
@@ -30,7 +32,9 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Shipping
             </NavLink>
           ) : (
-            <li className={styles["not-active"]}>Shipping</li>
+            <a href="/" className={styles["not-active"]}>
+              Shipping
+            </a>
           )}
         </li>
         <li className={styles["navbar-list-item"]}>
@@ -43,7 +47,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Payment
             </NavLink>
           ) : (
-            <a disabled className={styles["not-active"]}>
+            <a href="/" disabled className={styles["not-active"]}>
               Payment
             </a>
           )}
@@ -58,7 +62,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
               Place Order
             </NavLink>
           ) : (
-            <a disabled className={styles["not-active"]}>
+            <a href="/" disabled className={styles["not-active"]}>
               Place Order
             </a>
           )}
