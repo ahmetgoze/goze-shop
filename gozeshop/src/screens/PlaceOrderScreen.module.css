@@ -105,14 +105,12 @@
 }
 
 .checkout {
-  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  align-content: space-between;
-  justify-content: space-between;
-  max-height: 17rem;
-  width: 30rem;
+  align-content: flex-start;
+  /* justify-content: space-between; */
   text-transform: uppercase;
+  gap: 0.5rem;
   animation: transform-right 0.2s ease-in-out;
 }
 
@@ -145,5 +143,5 @@
 }
 
 strong {
-  opacity: .9;
+  opacity: 0.9;
 }

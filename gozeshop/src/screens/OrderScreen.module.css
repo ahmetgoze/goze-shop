@@ -21,7 +21,6 @@
 .summary-items,
 .title {
   animation: transform-left 0.2s ease-in-out;
-  max-width: 50%;
 }
 
 .summary-top {
@@ -119,7 +118,7 @@
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 0.5rem;
   text-transform: uppercase;
   animation: transform-right 0.2s ease-in-out;
 }

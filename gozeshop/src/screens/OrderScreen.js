@@ -118,6 +118,36 @@ const OrderScreen = ({ match, location, history }) => {
                   </div>
                 )}
               </li>
+              <li className={styles["summary-items"]}>
+                <h2 className={styles["title"]}>ORDER NO</h2>
+                <p className={styles["text"]}>{order._id}</p>
+              </li>
+              <li className={styles["summary-items"]}>
+                <h2 className={styles["title"]}>Shipping</h2>
+                <p className={styles["text"]}>
+                  <strong>Name: </strong>
+                  {order.user.name}
+                </p>
+                <p className={styles["text"]}>
+                  <strong>Email: </strong>
+                  {order.user.email}
+                </p>
+                <p className={styles["text"]}>
+                  <strong>Address: </strong>
+                  {order.shippingAddress.address}{" "}
+                  {order.shippingAddress.postalCode},{" "}
+                  {order.shippingAddress.city}
+                  {"/"}
+                  {order.shippingAddress.country}{" "}
+                </p>
+              </li>
+              <li className={styles["summary-items"]}>
+                <h2 className={styles["title"]}>Payment Method</h2>
+                <p className={styles["text"]}>
+                  <strong>Method: </strong>
+                  {order.paymentMethod}
+                </p>
+              </li>
             </div>
             <div>
               <div className={styles["checkout"]}>
@@ -184,8 +214,7 @@ const OrderScreen = ({ match, location, history }) => {
                         },
                         callbackIntents: ["PAYMENT_AUTHORIZATION"],
                       }}
-                      onLoadPaymentData={(paymentRequest) => {
-                      }}
+                      onLoadPaymentData={(paymentRequest) => {}}
                       onPaymentAuthorized={(paymentData) => {
                         dispatch(payOrder(orderId, paymentData));
                         return { transactionState: "SUCCESS" };
@@ -198,41 +227,12 @@ const OrderScreen = ({ match, location, history }) => {
                 )}
                 {order.isPaid && (
                   <Message className="success">
-                    Successfully made the transaction at {order.paidAt}
+                    Successfully made the transaction on {order.paidAt}
                   </Message>
                 )}
               </div>
             </div>
           </div>
-          <li className={styles["summary-items"]}>
-            <h2 className={styles["title"]}>ORDER NO</h2>
-            <p className={styles["text"]}>{order._id}</p>
-          </li>
-          <li className={styles["summary-items"]}>
-            <h2 className={styles["title"]}>Shipping</h2>
-            <p className={styles["text"]}>
-              <strong>Name: </strong>
-              {order.user.name}
-            </p>
-            <p className={styles["text"]}>
-              <strong>Email: </strong>
-              {order.user.email}
-            </p>
-            <p className={styles["text"]}>
-              <strong>Address: </strong>
-              {order.shippingAddress.address} {order.shippingAddress.postalCode}
-              , {order.shippingAddress.city}
-              {"/"}
-              {order.shippingAddress.country}{" "}
-            </p>
-          </li>
-          <li className={styles["summary-items"]}>
-            <h2 className={styles["title"]}>Payment Method</h2>
-            <p className={styles["text"]}>
-              <strong>Method: </strong>
-              {order.paymentMethod}
-            </p>
-          </li>
         </ul>
       )}
     </>
