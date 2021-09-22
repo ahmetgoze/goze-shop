@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Button from "../components/UI/Button";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";
 import { USER_UPDATE_RESET } from "../constants/userConstants";
+import { listMyOrders } from "../store/actions/orderActions";
 import {
   getUserDetails,
   updateUserDetails,
@@ -29,6 +31,13 @@ const ProfileScreen = ({ history }) => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   const { success } = userUpdateProfile;
 
+  const orderMyList = useSelector((state) => state.orderMyList);
+  const {
+    loading: orderListLoading,
+    error: orderListError,
+    orders,
+  } = orderMyList;
+
   useEffect(() => {
     if (!userInfo) {
       history.push("/");
@@ -38,6 +47,7 @@ const ProfileScreen = ({ history }) => {
           type: USER_UPDATE_RESET,
         });
         dispatch(getUserDetails("/profile"));
+        dispatch(listMyOrders());
       } else {
         setName(user.name);
         setEmail(user.email);
@@ -77,7 +87,63 @@ const ProfileScreen = ({ history }) => {
       )}
       {loading && <Spinner></Spinner>}
       <div className={styles["profile-screen"]}>
-        {/* <div className={styles["purchase-history"]}>PURCHASE HISTORY</div> */}
+        <div className={styles["order-history"]}>
+          {orderListLoading && <Spinner></Spinner>}
+          {orderListError && (
+            <Message className="alert">{orderListError}</Message>
+          )}
+          {orders && (
+            <table>
+              <caption>Order Summary</caption>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">DATE</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">PAID</th>
+                  <th scope="col">DELIVERED</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>${order.totalPrice}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-hourglass-half"
+                          style={{ color: "crimson" }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-hourglass-half"
+                          style={{ color: "crimson" }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      <Link to={`/order/${order._id}`}>
+                        <Button className="btn btn-sm btn-light">
+                          Details
+                        </Button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
         <div className={styles["profile"]}>
           <div className={styles["profile-header"]}>
             <div className={styles["profile-pic"]}>

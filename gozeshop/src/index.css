@@ -58,6 +58,11 @@ li {
   box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.2);
 }
 
+.btn-sm {
+  font-size: 0.7rem;
+  padding: 0.5rem 1rem;
+}
+
 .btn:active,
 .btn:hover {
   opacity: 1;

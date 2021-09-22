@@ -3,15 +3,12 @@
   width: 100%;
   display: flex;
   gap: 5rem;
-  background-color: rgb(250, 250, 250);
   border-radius: 8px;
-  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.2);
 }
 
-.purchase-history {
+.order-history {
   flex: 3;
   height: 100%;
-  background: red;
 }
 
 .profile {
@@ -23,6 +20,7 @@
   width: 80%;
   height: 80%;
   background-color: #eeeeee;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.2);
 }
 
 .profile-header {
@@ -116,4 +114,93 @@
 
 form a {
   margin-top: -4rem;
+}
+
+table {
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.2);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table caption {
+  font-size: 2.7em;
+  margin: 0 0 0.5em;
+  text-transform: uppercase;
+}
+
+table tr {
+  background-color: #eeeeee;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+table th {
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: #fafafa;
+  border-right: 1px solid #ddd;
+}
+
+table td {
+  opacity: 0.8;
+  font-size: 0.9rem;
+  border-right: 1px solid #ddd;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
 }
