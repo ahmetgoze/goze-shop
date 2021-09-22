@@ -22,7 +22,7 @@ const OrderScreen = ({ match, location, history }) => {
 
   useEffect(() => {
     dispatch({ type: ORDER_PAY_RESET });
-    if (!order || successPay) {
+    if (!order || successPay || orderId !== order._id) {
       dispatch(getOrderDetails(orderId));
     }
   }, [dispatch, successPay, order, orderId]);
