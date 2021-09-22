@@ -53,7 +53,7 @@ const ProfileScreen = ({ history }) => {
         setEmail(user.email);
       }
     }
-  }, [history, userInfo, user, dispatch, success]);
+  }, [history, userInfo, user, dispatch, success, orders]);
 
   const formSubmitHandler = (e) => {
     e.preventDefault();

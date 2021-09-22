@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";
-import { getOrderDetails, payOrder } from "../store/actions/orderActions";
+import {
+  getOrderDetails,
+  listMyOrders,
+  payOrder,
+} from "../store/actions/orderActions";
 import GooglePayButton from "@google-pay/button-react";
 import { ORDER_PAY_RESET } from "../constants/orderConstants";
 import styles from "./OrderScreen.module.css";
+import { removeAllFromCart } from "../store/actions/cartActions";
 
 const OrderScreen = ({ match, location, history }) => {
   const dispatch = useDispatch();
@@ -217,6 +222,8 @@ const OrderScreen = ({ match, location, history }) => {
                       onLoadPaymentData={(paymentRequest) => {}}
                       onPaymentAuthorized={(paymentData) => {
                         dispatch(payOrder(orderId, paymentData));
+                        dispatch(listMyOrders());
+                        dispatch(removeAllFromCart());
                         return { transactionState: "SUCCESS" };
                       }}
                       existingPaymentMethodRequired="false"

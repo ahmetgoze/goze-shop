@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   CART_ADD_ITEM,
+  CART_REMOVE_ALL_ITEMS,
   CART_REMOVE_ITEM,
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SHIPPING_ADDRESS,
@@ -33,6 +34,16 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
     });
     const { cart } = getState();
     localStorage.setItem("cartItems", JSON.stringify(cart.cartItems));
+  } catch (error) {}
+};
+
+export const removeAllFromCart = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CART_REMOVE_ALL_ITEMS,
+    });
+    const { cart } = getState();
+    localStorage.removeItem("cartItems");
   } catch (error) {}
 };
 
