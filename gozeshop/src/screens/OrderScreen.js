@@ -4,22 +4,31 @@ import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";
-import { getOrderDetails } from "../store/actions/orderActions";
+import { getOrderDetails, payOrder } from "../store/actions/orderActions";
+import GooglePayButton from "@google-pay/button-react";
+import { ORDER_PAY_RESET } from "../constants/orderConstants";
 import styles from "./OrderScreen.module.css";
 
 const OrderScreen = ({ match, location, history }) => {
   const dispatch = useDispatch();
 
   const orderId = match.params.id;
-  useEffect(() => {
-    if (!order || order.id !== orderId) {
-      dispatch(getOrderDetails(orderId));
-    }
-    // eslint-disable-next-line
-  }, [orderId, dispatch]);
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { loading, order } = orderDetails;
+
+  const orderPay = useSelector((state) => state.orderPay);
+  const { loading: loadingPay, success: successPay } = orderPay;
+
+  useEffect(() => {
+    dispatch({ type: ORDER_PAY_RESET });
+    if (!order || successPay) {
+      dispatch(getOrderDetails(orderId));
+    }
+  }, [dispatch, successPay, order, orderId]);
+
+  //
+
   return (
     <>
       <CheckoutSteps
@@ -135,6 +144,63 @@ const OrderScreen = ({ match, location, history }) => {
                       .toFixed(2)}
                   </span>
                 </div>
+                {!order.isPaid && (
+                  <>
+                    {loadingPay && <Spinner></Spinner>}
+                    <GooglePayButton
+                      environment="TEST"
+                      paymentRequest={{
+                        apiVersion: 2,
+                        apiVersionMinor: 0,
+                        allowedPaymentMethods: [
+                          {
+                            type: "CARD",
+                            parameters: {
+                              allowedAuthMethods: [
+                                "PAN_ONLY",
+                                "CRYPTOGRAM_3DS",
+                              ],
+                              allowedCardNetworks: ["MASTERCARD", "VISA"],
+                            },
+                            tokenizationSpecification: {
+                              type: "PAYMENT_GATEWAY",
+                              parameters: {
+                                gateway: "example",
+                                gatewayMerchantId: "exampleGatewayMerchantId",
+                              },
+                            },
+                          },
+                        ],
+                        merchantInfo: {
+                          merchantId: `${process.env.GOOGLE_PAY_MERCHANT_ID}`,
+                          merchantName: "Gozeshop",
+                        },
+                        transactionInfo: {
+                          totalPriceStatus: "FINAL",
+                          totalPriceLabel: "Total",
+                          totalPrice: `${order.totalPrice}`,
+                          currencyCode: "USD",
+                          countryCode: "US",
+                        },
+                        callbackIntents: ["PAYMENT_AUTHORIZATION"],
+                      }}
+                      onLoadPaymentData={(paymentRequest) => {
+                      }}
+                      onPaymentAuthorized={(paymentData) => {
+                        dispatch(payOrder(orderId, paymentData));
+                        return { transactionState: "SUCCESS" };
+                      }}
+                      existingPaymentMethodRequired="false"
+                      buttonColor="black"
+                      buttonType="Buy"
+                    />
+                  </>
+                )}
+                {order.isPaid && (
+                  <Message className="success">
+                    Successfully made the transaction at {order.paidAt}
+                  </Message>
+                )}
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ import { savePaymentMethod } from "../store/actions/cartActions";
 import styles from "./PaymentScreen.module.css";
 
 const PaymentScreen = ({ history }) => {
-  const [paymentMethod, setPaymentMethod] = useState("PayPal");
+  const [paymentMethod, setPaymentMethod] = useState("Google Pay");
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -32,15 +32,15 @@ const PaymentScreen = ({ history }) => {
               <input
                 className={styles["input-method"]}
                 type="radio"
-                value="PayPal"
+                value="Google Pay"
                 name="paymentMethod"
-                label="Paypal or Credit Card"
+                label="Google Pay"
                 checked
-                id="PayPal"
+                id="Google Pay"
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
-              <label className={styles["label-method"]} htmlFor="PayPal">
-                PayPal or Credit Card
+              <label className={styles["label-method"]} htmlFor="Google Pay">
+                Google Pay
               </label>
             </div>
             {/* <div className={styles["labels"]}>

@@ -16,8 +16,6 @@ const PlaceOrderScreen = ({ match, location, history }) => {
 
   const { cartItems } = cart;
   const { success, order, error, loading } = orderCreate;
-  console.log(orderCreate);
-  console.log(success);
 
   // Calculate prices
   cart.itemsPrice = cart.cartItems.reduce(

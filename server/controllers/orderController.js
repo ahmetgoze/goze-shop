@@ -57,15 +57,12 @@ export const getOrderById = asyncHandler(async (req, res) => {
 export const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
+  console.log(order);
+
   if (order) {
     order.isPaid = true;
-    order.paidAt = Data.now();
-    order.paymentResult = {
-      id: req.body.id,
-      status: req.body.status,
-      update_time: req.body.update_time,
-      email_address: req.body.payer.email_address,
-    };
+    order.paidAt = Date.now();
+    order.paymentData = req.body;
 
     const updatedOrder = await order.save();
 
