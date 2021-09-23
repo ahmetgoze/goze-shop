@@ -1,5 +1,4 @@
 import axios from "axios";
-import { CART_CLEAR_SHIPPING_ADDRESS } from "../../constants/cartConstants";
 import { ORDER_DETAILS_MY_RESET } from "../../constants/orderConstants";
 import {
   USER_DELETE_FAIL,
