@@ -1,5 +1,6 @@
 import {
   CART_ADD_ITEM,
+  CART_CLEAR_SHIPPING_ADDRESS,
   CART_REMOVE_ALL_ITEMS,
   CART_REMOVE_ITEM,
   CART_SAVE_PAYMENT_METHOD,
@@ -43,6 +44,12 @@ export const cartReducer = (
     case CART_REMOVE_ALL_ITEMS:
       return {
         cartItems: [],
+      };
+
+    case CART_CLEAR_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: {},
       };
 
     case CART_SAVE_SHIPPING_ADDRESS:

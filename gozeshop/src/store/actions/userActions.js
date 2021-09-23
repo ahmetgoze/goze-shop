@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CART_CLEAR_SHIPPING_ADDRESS } from "../../constants/cartConstants";
 import { ORDER_DETAILS_MY_RESET } from "../../constants/orderConstants";
 import {
   USER_DETAIL_FAIL,
@@ -54,6 +55,7 @@ export const logout = () => async (dispatch) => {
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAIL_RESET });
   dispatch({ type: ORDER_DETAILS_MY_RESET });
+  dispatch({ type: CART_CLEAR_SHIPPING_ADDRESS });
 
   localStorage.removeItem("userInfo");
 };
