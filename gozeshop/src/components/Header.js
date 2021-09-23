@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import logo from "../img/logo-alt.svg";
+import { clearShippingAddress } from "../store/actions/cartActions";
 import { logout } from "../store/actions/userActions";
 import styles from "./Header.module.css";
 
