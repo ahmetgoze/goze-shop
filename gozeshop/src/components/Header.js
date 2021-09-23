@@ -14,7 +14,7 @@ const Header = () => {
 
   const { cartItems } = cart;
 
-  const { name } = userLogin.userInfo || "";
+  const { name, isAdmin } = userLogin.userInfo || "";
 
   const changeNavbar = () => {
     if (window.scrollY > 50) {
@@ -74,6 +74,19 @@ const Header = () => {
                     <li>
                       <NavLink to="/profile">Profile</NavLink>
                     </li>
+                    {isAdmin && (
+                      <>
+                        <li>
+                          <NavLink to="/userlist">User List</NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/prdocutlist">Product List</NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/orderlist">Order List</NavLink>
+                        </li>
+                      </>
+                    )}
                     <li>
                       <Link to="/" onClick={logoutHandler}>
                         Logout

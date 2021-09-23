@@ -43,7 +43,6 @@ export const removeAllFromCart = () => async (dispatch, getState) => {
     dispatch({
       type: CART_REMOVE_ALL_ITEMS,
     });
-    const { cart } = getState();
     localStorage.removeItem("cartItems");
   } catch (error) {}
 };
