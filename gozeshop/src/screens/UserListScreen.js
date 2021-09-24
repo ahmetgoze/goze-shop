@@ -69,19 +69,21 @@ const UserListScreen = ({ history }) => {
                     )}
                   </td>
                   <td>
-                    <Link to={`/user-${user._id}-edit`}>
-                      <Button className="btn btn-sm btn-light">
-                        <i className="fas fa-user-edit"></i>
-                      </Button>
-                    </Link>
-                    {!user.isAdmin && (
-                      <Button
-                        className="btn btn-sm btn-light"
-                        onClick={() => deleteHandler(user._id)}
-                      >
-                        <i className="fas fa-trash"></i>
-                      </Button>
-                    )}
+                    <div className={styles["table-buttons"]}>
+                      <Link to={`/user-${user._id}-edit`}>
+                        <Button className="btn btn-sm btn-light">
+                          <i className="fas fa-user-edit"></i>
+                        </Button>
+                      </Link>
+                      {!user.isAdmin && (
+                        <Button
+                          className="btn btn-sm btn-light"
+                          onClick={() => deleteHandler(user._id)}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </Button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
