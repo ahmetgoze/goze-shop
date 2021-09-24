@@ -72,6 +72,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0 1rem;
   animation: fade-up 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s ease-in-out;
 }
 
 @media screen and (max-width: 1800px) {
@@ -153,4 +154,3 @@
     opacity: 1;
   }
 }
-

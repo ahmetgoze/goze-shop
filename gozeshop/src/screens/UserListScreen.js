@@ -9,7 +9,7 @@ import styles from "./UserListScreen.module.css";
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.userList);
-  const { loading, error, users } = userList;
+  const { loading, users } = userList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -69,7 +69,7 @@ const UserListScreen = ({ history }) => {
                     )}
                   </td>
                   <td>
-                    <Link to={`/user/${user._id}/edit`}>
+                    <Link to={`/user-${user._id}-edit`}>
                       <Button className="btn btn-sm btn-light">
                         <i className="fas fa-user-edit"></i>
                       </Button>

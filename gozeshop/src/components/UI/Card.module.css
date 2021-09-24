@@ -6,4 +6,10 @@
   background-color: #f6f7fb;
   width: 20rem;
   min-height: 22rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 7px 12px 14px rgba(0, 0, 0, 0.2);
+  transform: scale(1.015);
 }
