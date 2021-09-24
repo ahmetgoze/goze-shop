@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../components/UI/Button";
 import Spinner from "../components/UI/Spinner";
-import { listProducts } from "../store/actions/productActions";
+import { listProducts, removeProduct } from "../store/actions/productActions";
 import styles from "./ProductListScreen.module.css";
 
 const ProductListScreen = ({ history, matcj }) => {
@@ -14,17 +14,21 @@ const ProductListScreen = ({ history, matcj }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const productRemove = useSelector((state) => state.productRemove);
+  const { success: successRemove } = productRemove;
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listProducts());
     } else {
       history.push("/");
     }
-  }, [dispatch, userInfo, history]);
+  }, [dispatch, userInfo, history, successRemove]);
 
   const deleteHandler = (userId) => {
     if (window.confirm("Are you sure?")) {
       // Delete products
+      dispatch(removeProduct(userId));
     }
   };
 
