@@ -20,11 +20,7 @@ const UserEditScreen = ({ match, history }) => {
   const { loading, user, error } = userDetails;
 
   const userUpdate = useSelector((state) => state.userUpdate);
-  const {
-    loading: loadingUpdate,
-    success: successUpdate,
-    error: errorUpdate,
-  } = userUpdate;
+  const { loading: loadingUpdate, success: successUpdate } = userUpdate;
 
   useEffect(() => {
     if (successUpdate) {
@@ -60,6 +56,7 @@ const UserEditScreen = ({ match, history }) => {
           </div>
         )}
         {loading && <Spinner></Spinner>}
+        {loadingUpdate && <Spinner></Spinner>}
         {user && (
           <form className={styles["form"]} onSubmit={formSubmitHandler}>
             <label className={styles["label-name"]} htmlFor="text">

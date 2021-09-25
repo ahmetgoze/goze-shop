@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../components/UI/Button";
 import Spinner from "../components/UI/Spinner";
-import { listProducts, removeProduct } from "../store/actions/productActions";
+import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
+import {
+  createProduct,
+  listProducts,
+  removeProduct,
+} from "../store/actions/productActions";
 import styles from "./ProductListScreen.module.css";
 
 const ProductListScreen = ({ history, matcj }) => {
@@ -15,15 +20,34 @@ const ProductListScreen = ({ history, matcj }) => {
   const { userInfo } = userLogin;
 
   const productRemove = useSelector((state) => state.productRemove);
-  const { success: successRemove } = productRemove;
+  const { success: successRemove, loading: loadingRemove } = productRemove;
+
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    success: successCreate,
+    product: createdProduct,
+    loading: loadingCreate,
+  } = productCreate;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listProducts());
-    } else {
+    dispatch({ type: PRODUCT_CREATE_RESET });
+    if (!userInfo.isAdmin) {
       history.push("/");
     }
-  }, [dispatch, userInfo, history, successRemove]);
+
+    if (successCreate) {
+      history.push(`/product-${createdProduct._id}-edit`);
+    } else {
+      dispatch(listProducts());
+    }
+  }, [
+    dispatch,
+    userInfo,
+    history,
+    successRemove,
+    successCreate,
+    createdProduct,
+  ]);
 
   const deleteHandler = (userId) => {
     if (window.confirm("Are you sure?")) {
@@ -32,12 +56,14 @@ const ProductListScreen = ({ history, matcj }) => {
     }
   };
 
-  const createProductHandler = (e) => {
-    e.preventDefault();
+  const createProductHandler = () => {
+    dispatch(createProduct());
   };
   return (
     <>
       {loading && <Spinner></Spinner>}
+      {loadingRemove && <Spinner></Spinner>}
+      {loadingCreate && <Spinner></Spinner>}
       {products && (
         <div className={styles["table-container"]}>
           <table>
