@@ -3,19 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../components/UI/Button";
 import Spinner from "../components/UI/Spinner";
-import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 import { listOrders } from "../store/actions/orderActions";
-import {
-  createProduct,
-  listProducts,
-  removeProduct,
-} from "../store/actions/productActions";
-import styles from "./ProductListScreen.module.css";
+import styles from "./OrderListScreen.module.css";
 
-const OrderListScreen = ({ history, matcj }) => {
+const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch();
   const orderList = useSelector((state) => state.orderList);
-  const { loading, orders, error } = orderList;
+  const { loading, orders } = orderList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -28,9 +22,6 @@ const OrderListScreen = ({ history, matcj }) => {
     }
   }, [dispatch, userInfo, history]);
 
-  const createProductHandler = () => {
-    dispatch(createProduct());
-  };
   return (
     <>
       {loading && <Spinner></Spinner>}

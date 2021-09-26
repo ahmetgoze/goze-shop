@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Loader from "react-spinners/BarLoader";
 import Button from "../components/UI/Button";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";

@@ -4,13 +4,18 @@ import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";
+import Button from "../components/UI/Button";
 import {
+  deliverOrder,
   getOrderDetails,
   listMyOrders,
   payOrder,
 } from "../store/actions/orderActions";
 import GooglePayButton from "@google-pay/button-react";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
+import {
+  ORDER_DELIVER_RESET,
+  ORDER_PAY_RESET,
+} from "../constants/orderConstants";
 import styles from "./OrderScreen.module.css";
 import { removeAllFromCart } from "../store/actions/cartActions";
 
@@ -22,17 +27,29 @@ const OrderScreen = ({ match, location, history }) => {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { loading, order } = orderDetails;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successPay } = orderPay;
 
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
+
   useEffect(() => {
-    dispatch({ type: ORDER_PAY_RESET });
-    if (!order || successPay || orderId !== order._id) {
+    if (!userInfo) {
+      history.push("/login");
+    }
+    if (!order || successPay || successDeliver || orderId !== order._id) {
+      dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
     }
-  }, [dispatch, successPay, order, orderId]);
+  }, [dispatch, successPay, successDeliver, order, orderId]);
 
-  //
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order));
+  };
 
   return (
     <>
@@ -235,6 +252,25 @@ const OrderScreen = ({ match, location, history }) => {
                 {order.isPaid && (
                   <Message className="success">
                     Successfully made the transaction on {order.paidAt}
+                  </Message>
+                )}
+                {userInfo &&
+                  userInfo.isAdmin &&
+                  order.isPaid &&
+                  !order.isDelivered && (
+                    <Button
+                      type="button"
+                      className="btn btn-dark"
+                      onClick={deliverHandler}
+                    >
+                      Mark As Delivered
+                    </Button>
+                  )}
+                {loadingDeliver && <Spinner></Spinner>}
+                {order.isDelivered && (
+                  <Message className="success">
+                    Your order successfully marked as delivered on{" "}
+                    {order.deliveredAt}
                   </Message>
                 )}
               </div>
