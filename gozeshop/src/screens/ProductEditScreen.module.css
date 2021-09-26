@@ -1,0 +1,94 @@
+.form-container {
+  margin: 0 auto;
+  max-width: 30rem;
+  height: auto;
+  background-color: rgb(250, 250, 250);
+  border: 2px solid rgb(250, 250, 250);
+  border-radius: 8px;
+  box-shadow: 5px 10px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: form-animation 0.2s ease-in-out;
+}
+
+@keyframes form-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.form-title {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.form label {
+  font-weight: 600;
+}
+
+.form input {
+  border: none;
+  background: none;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  padding: 0.6rem 0;
+  transition: all 0.3s ease-in-out;
+  font-family: inherit;
+}
+
+.form input:focus,
+.form input:active {
+  outline: none;
+}
+
+.form input::placeholder,
+.textarea::placeholder {
+  font-family: "Montserrat", sans-serif;
+  opacity: 0.3;
+}
+
+.label-email {
+  margin-bottom: 0.2rem;
+}
+
+.label-email {
+  margin: 1rem 0 0.2rem 0;
+}
+
+.input-checkbox {
+  outline: none;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.5rem;
+}
+
+.input-checkbox:checked,
+.input-checkbox:active {
+  filter: grayscale(100);
+}
+
+.textarea {
+  padding: 0.5rem 0;
+  height: 10rem;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0);
+}
