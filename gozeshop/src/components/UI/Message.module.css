@@ -13,9 +13,11 @@
 }
 
 .alert {
-  color: crimson;
+  color: rgb(97, 8, 26);
+  background-color: rgba(220, 20, 60, 0.767);
 }
 
 .success {
   color: green;
+  background-color: rgba(18, 189, 18, 0.541);
 }
