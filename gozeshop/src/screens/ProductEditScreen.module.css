@@ -92,3 +92,21 @@
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0);
 }
+
+.input-file button {
+  font-size: 5rem;
+}
+
+/* input #file-upload-button {
+  margin: 2rem;
+} */
+
+input[type="file"] {
+  display: none;
+}
+
+.label-upload {
+  text-align: center;
+  display: inline-block;
+  max-width: 3rem;
+}

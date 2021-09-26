@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Loader from "react-spinners/BarLoader";
 import Button from "../components/UI/Button";
 import Message from "../components/UI/Message";
 import Spinner from "../components/UI/Spinner";
@@ -21,6 +23,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -69,6 +72,28 @@ const ProductEditScreen = ({ match, history }) => {
         countInStock,
       })
     );
+  };
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form",
+        },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+
+      setImage(data);
+      setUploading(false);
+    } catch (err) {
+      setUploading(false);
+    }
   };
 
   return (
@@ -123,6 +148,20 @@ const ProductEditScreen = ({ match, history }) => {
               onChange={(e) => setImage(e.target.value)}
               placeholder="Enter image url"
             />
+            <label
+              className={`${styles["label-email"]} ${styles["label-upload"]} btn btn-light btn-sm`}
+              htmlFor="image-upload"
+            >
+              <i className="fas fa-cloud-upload-alt"></i>
+            </label>
+            <input
+              id="image-upload"
+              className="input-file"
+              type="file"
+              label="Choose File"
+              onChange={uploadFileHandler}
+            />
+            {uploading && <Spinner></Spinner>}
 
             <label className={styles["label-email"]} htmlFor="brand">
               Brand
