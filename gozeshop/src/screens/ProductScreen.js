@@ -10,11 +10,26 @@ import styles from "./ProductScreen.module.css";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
 
   const dispatch = useDispatch();
-  const productDetail = useSelector((state) => state.productDetail);
+  const userLogin = useSelector((state) => state.userLogin);
+  const {
+    loading: loadingUserInfo,
+    error: errorUserInfo,
+    userInfo,
+  } = userLogin;
 
+  const productDetail = useSelector((state) => state.productDetail);
   const { loading, error, product } = productDetail;
+
+  const productCreateReview = useSelector((state) => state.productCreateReview);
+  const {
+    loading: reviewLoading,
+    error: reviewError,
+    success: reviewSuccess,
+  } = productCreateReview;
 
   const id = match.params.id;
 
@@ -29,9 +44,9 @@ const ProductScreen = ({ history, match }) => {
   return (
     <>
       <div className={styles["product-screen"]}>
-      <Link className="btn btn-light" to="/">
-        Go Back
-      </Link>
+        <Link className="btn btn-light" to="/">
+          Go Back
+        </Link>
         {loading && <Spinner />}
         {error && <Message className="alert">{error}</Message>}
         <div className={styles.product}>
