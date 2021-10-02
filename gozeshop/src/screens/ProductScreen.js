@@ -118,22 +118,27 @@ const ProductScreen = ({ history, match }) => {
             </div>
           </div>
         </div>
-        <div>
-          <span>{`${product.reviews.length} reviews`}</span>
-          <ul>
+        <div className={styles["review-section"]}>
+          <span
+            className={styles["review-title"]}
+          >{`${product.reviews.length} reviews`}</span>
+          <ul className={styles["review-list"]}>
             {product.reviews.map((review) => (
-              <li key={review._id}>
-                <span>
+              <li className={styles["review-list-item"]} key={review._id}>
+                <span className={styles["review-rating"]}>
                   <Rating value={review.rating}></Rating>
                 </span>
-                <strong>{review.comment}</strong>
-                <div>
-                  <p>
-                    <span>revied by</span> {review.name.split(" ")[0]}
+                <strong className={styles["review-comment"]}>
+                  {review.comment}
+                </strong>
+                <div className={styles["review-bottom"]}>
+                  <p className={styles["review-user_name"]}>
+                    <span>reviewed by</span> {review.name.split(" ")[0]}
                   </p>
-                  <p>{review.createdAt.substring(0, 10)}</p>
+                  <p className={styles["review-date"]}>
+                    {review.createdAt.substring(0, 10)}
+                  </p>
                 </div>
-                <span>&quot;</span>
               </li>
             ))}
           </ul>

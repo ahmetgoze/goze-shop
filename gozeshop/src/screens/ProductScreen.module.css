@@ -87,6 +87,56 @@
   background-color: #f6f7fb;
 }
 
+/* Review */
+
+.review-section {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 4rem 0;
+}
+
+.review-title {
+  display: grid;
+  place-items: center;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+}
+
+.review-list-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.review-rating {
+  font-size: 1.7rem;
+}
+
+.review-comment {
+  font-size: 2rem;
+  margin: 0.2rem 0;
+  display: inline-block;
+}
+
+.review-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.review-user_name span,
+.review-date {
+  opacity: 0.6;
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;
