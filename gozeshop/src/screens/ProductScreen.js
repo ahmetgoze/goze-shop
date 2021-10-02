@@ -41,6 +41,8 @@ const ProductScreen = ({ history, match }) => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
+  console.log(product.reviews);
+
   return (
     <>
       <div className={styles["product-screen"]}>
@@ -115,6 +117,26 @@ const ProductScreen = ({ history, match }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <span>{`${product.reviews.length} reviews`}</span>
+          <ul>
+            {product.reviews.map((review) => (
+              <li key={review._id}>
+                <span>
+                  <Rating value={review.rating}></Rating>
+                </span>
+                <strong>{review.comment}</strong>
+                <div>
+                  <p>
+                    <span>revied by</span> {review.name.split(" ")[0]}
+                  </p>
+                  <p>{review.createdAt.substring(0, 10)}</p>
+                </div>
+                <span>&quot;</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>
