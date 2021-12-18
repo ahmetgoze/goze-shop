@@ -108,12 +108,13 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  gap: 3rem;
 }
 
 .review-list-item {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
 }
 
 .review-rating {
@@ -135,6 +136,32 @@
 .review-user_name span,
 .review-date {
   opacity: 0.6;
+}
+
+.review-signup-text a {
+  font-weight: bold;
+}
+
+.comment {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.comment-label {
+  margin-top: 1rem;
+}
+
+.comment-text {
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 10px;
+  background: rgb(246, 247, 251);
+  font-size: 1.2rem;
+  font-family: inherit;
+  padding: 1rem;
+  border: 0px;
+  margin: 8px 0px 0px 0px;
+  width: 352px;
+  height: 131px;
 }
 
 @keyframes fade-in {

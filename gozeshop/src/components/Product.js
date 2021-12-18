@@ -17,7 +17,15 @@ const Product = ({ product }) => {
           {product.name}
         </Link>
 
-        <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+        <Rating
+          value={product.rating && product.rating}
+          text={
+            product.numReviews ?
+            (product.numReviews > 1
+              ? `${product.numReviews} reviews`
+              : `${product.numReviews} review`) : "Not rated yet"
+          }
+        />
 
         <h3 className={styles["product_price"]}>${product.price}</h3>
       </div>
