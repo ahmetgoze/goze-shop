@@ -33,6 +33,13 @@
   margin: 0 auto;
 }
 
+.navbar-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+}
+
 .navbar_logo {
   width: 8rem;
   transition: all 0.2s ease-out;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { Link, NavLink, withRouter, Route } from "react-router-dom";
 import logo from "../img/logo-alt.svg";
 import { logout } from "../store/actions/userActions";
 import styles from "./Header.module.css";
+import SearchBox from "./SearchBox";
 
 const Header = () => {
   const [navbar, Setnavbar] = useState(false);
@@ -34,9 +35,12 @@ const Header = () => {
     <header className={navbar ? styles["sticky-header"] : styles["header"]}>
       <div className={styles["navbar-container"]}>
         <div className={styles.navbar}>
-          <NavLink to="/" className={styles["navbar_logo"]}>
-            <img src={logo} alt="Logo" />
-          </NavLink>
+          <div className={styles["navbar-left"]}>
+            <NavLink to="/" className={styles["navbar_logo"]}>
+              <img src={logo} alt="Logo" />
+            </NavLink>
+            <Route render={({ history }) => <SearchBox history={history} />} />
+          </div>
           <ul className={styles["navbar_link"]}>
             <li>
               <NavLink to="/cart" activeClassName={styles["navbar-active"]}>
