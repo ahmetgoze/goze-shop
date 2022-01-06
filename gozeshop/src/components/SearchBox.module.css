@@ -1,0 +1,32 @@
+.search-box {
+  position: relative;
+  max-width: 372px;
+  padding: 0.5rem 2rem;
+  margin: 0 1rem;
+  height: 47px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 1;
+  box-shadow: rgb(0 0 0 / 5%) 0px 3px 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.search-box input {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.83;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  cursor: text;
+}
+
+.search-box button {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
