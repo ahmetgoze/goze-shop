@@ -11,7 +11,7 @@ node_modules/dependencies
 /coverage
 
 # production
-/build
+/gozeshop/build
 
 # misc
 .DS_Store
