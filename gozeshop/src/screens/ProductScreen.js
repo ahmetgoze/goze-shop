@@ -19,21 +19,13 @@ const ProductScreen = ({ history, match }) => {
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const {
-    loading: loadingUserInfo,
-    error: errorUserInfo,
-    userInfo,
-  } = userLogin;
+  const { userInfo } = userLogin;
 
   const productDetail = useSelector((state) => state.productDetail);
   const { loading, error, product } = productDetail;
 
   const productCreateReview = useSelector((state) => state.productCreateReview);
-  const {
-    loading: reviewLoading,
-    error: reviewError,
-    success: reviewSuccess,
-  } = productCreateReview;
+  const { success: reviewSuccess } = productCreateReview;
 
   const id = match.params.id;
 
